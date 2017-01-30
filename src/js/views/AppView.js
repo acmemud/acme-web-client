@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {Button} from 'react-bootstrap';
+import '../../sass/acme.scss';
 
 class AppView extends React.Component {
   render() {

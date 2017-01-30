@@ -3,9 +3,9 @@
 import AppView from '../views/AppView';
 import React from 'react';
 import {Container} from 'flux/utils';
-import MudActions from '../data/MudActions';
-import MessageStore from '../data/MessageStore';
-import CommandStore from '../data/CommandStore';
+import MudActions from '../actions/MudActions';
+import MessageStore from '../stores/MessageStore';
+import CommandStore from '../stores/CommandStore';
 
 class AppContainer extends React.Component {
   static getStores() {

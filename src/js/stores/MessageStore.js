@@ -1,11 +1,11 @@
 'use strict';
 
-import Counter from './Counter';
 import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
-import Message from './Message';
-import MudActionTypes from './MudActionTypes';
-import MudDispatcher from './MudDispatcher';
+import Counter from '../data/Counter';
+import Message from '../data/Message';
+import {ActionTypes} from '../MudConstants';
+import MudDispatcher from '../MudDispatcher';
 
 class MessageStore extends ReduceStore {
   constructor() {
@@ -18,7 +18,7 @@ class MessageStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case MudActionTypes.RECEIVE_MESSAGE:
+      case ActionTypes.RECEIVE_MESSAGE:
         // Don't receive empty messages
         if (!action.message) {
           return state;

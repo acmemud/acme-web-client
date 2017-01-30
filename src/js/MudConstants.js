@@ -5,4 +5,8 @@ const ActionTypes = {
   SEND_COMMAND: 'SEND_COMMAND',
 };
 
-export default ActionTypes;
+const Constants = {
+  ActionTypes: ActionTypes
+};
+
+export default Constants;

@@ -1,0 +1,9 @@
+$bootstrap-sass-asset-helper: true;
+
+@import "compass/reset";
+@import "bootstrap";
+
+.btn-login {
+  @extend .btn;
+  @extend .btn-info;
+}
