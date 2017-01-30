@@ -13,8 +13,10 @@ module.exports = {
     app: ["./src/root.js"]
   },
   output: {
-    path: path.resolve(__dirname, "build"),
     publicPath: "/assets/",
     filename: "bundle.js"
+  },
+  watchOptions: {
+    poll: true
   }
 };
