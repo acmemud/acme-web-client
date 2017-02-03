@@ -1,12 +1,10 @@
 'use strict';
 
-const ActionTypes = {
+export const ActionTypes = {
+  CONNECTING: 'CONNECTING',
+  CONNECT: 'CONNECT',
+  DISCONNECTING: 'DISCONNECTING',
+  DISCONNECT: 'DISCONNECT',
   RECEIVE_MESSAGE: 'RECEIVE_MESSAGE',
   SEND_COMMAND: 'SEND_COMMAND',
 };
-
-const Constants = {
-  ActionTypes: ActionTypes
-};
-
-export default Constants;
