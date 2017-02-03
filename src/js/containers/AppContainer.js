@@ -4,29 +4,30 @@ import AppView from '../views/AppView';
 import React from 'react';
 import {Container} from 'flux/utils';
 import MudActions from '../actions/MudActions';
-import MessageStore from '../stores/MessageStore';
-import CommandStore from '../stores/CommandStore';
+import AppStore from '../stores/AppStore'
 
 class AppContainer extends React.Component {
   static getStores() {
     return [
-      MessageStore,
-      CommandStore,
+      AppStore
     ];
   }
 
-  static calculateState(prevState) {
+  static calculateState(prevState) {  
     return {
-      messages: MessageStore.getState(),
-      commands: CommandStore.getState(),
+      app: AppStore.getState(),
 
-      onMessage: MudActions.receiveMessage,
-      onCommand: MudActions.sendCommand,
+      onLogin: MudActions.connect,
+      onLogout: MudActions.disconnect,
     };
   }
 
   render() {
-    return <AppView messages={this.state.messages} commands={this.state.commands} />;
+    return (
+      <AppView app={this.state.app}
+               onLogin={this.state.onLogin.bind(this)}
+               onLogout={this.state.onLogout.bind(this)} />
+    );
   }
 }
 
