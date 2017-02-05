@@ -46,8 +46,23 @@ const Actions = {
     MudDispatcher.dispatch({
       type: ActionTypes.SEND_COMMAND,
       command
-    })
+    });
   },
+
+  addServer(server) {
+    MudDispatcher.dispatch({
+      type: ActionTypes.ADD_SERVER,
+      server
+    });
+  },
+
+  removeServer(server) {
+    MudDispatcher.dispatch({
+      type: ActionTypes.REMOVE_SERVER,
+      server
+    });
+  },
+  
 };
 
 export default Actions;
