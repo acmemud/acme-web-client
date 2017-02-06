@@ -21,7 +21,7 @@ class ServerItem extends React.Component {
         );
       } else {
         return (
-          <Label label={this.props.label} />
+          <ThumbnailLabel noReplace={true} label={this.props.label} />
         );
       }
     }

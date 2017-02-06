@@ -14,7 +14,7 @@ class Thumbnail extends React.Component {
     } else {
       if (this.props.noReplace) {
         return (
-          <div className="mud-thumbnail"></div>
+          <div className="mud-thumbnail mud-thumbnail-hidden"></div>
         );
       } else {
         return (

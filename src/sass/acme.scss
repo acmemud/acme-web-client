@@ -3,7 +3,65 @@ $bootstrap-sass-asset-helper: true;
 @import "compass/reset";
 @import "bootstrap";
 
-.btn-login {
-  @extend .btn;
-  @extend .btn-info;
+$thumbnail-width: 1.65em;
+$thumbnail-height: 1.65em;
+
+@mixin thumbnail() {
+  display: inline-block;
+  float: left;
+  width: $thumbnail-width;
+  height: $thumbnail-height;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.navbar li.dropdown {
+  display: inline;
+
+  .dropdown-toggle {
+    @extend .btn;
+    @extend .btn-default;
+
+    .mud-thumbnail-caption-label {
+      float: left;
+    }
+
+    .caret {
+      margin-left: 5px;
+    }
+
+  }
+
+  .mud-thumbnail-caption-label {
+  }
+
+  .mud-thumbnail  {
+    @extend .label;
+    @extend .label-default;
+    @include thumbnail();
+    vertical-align: middle;
+    font-size: 1.5em;
+    padding-left: 10px;
+    padding-top: 6px;
+  }
+
+  .mud-thumbnail:empty {
+    @include thumbnail();
+  }
+
+  .mud-thumbnail-hidden {
+    visibility: hidden;
+  }
+
+  .mud-label {
+    display: block;
+    font-size: 1.15em;
+    vertical-align: middle;
+  }
+
+  .mud-caption {
+    display: block;
+    font-size: .85em;
+  }
+
 }

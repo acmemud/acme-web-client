@@ -8,12 +8,12 @@ import '../../../sass/acme.scss';
 class ThumbnailLabel extends React.Component {
   render() {
     return (
-      <div className="mud-thumbnail-label">
-        <span><Thumbnail noReplace={this.props.noReplace} 
+      <span className="mud-thumbnail-label">
+        <Thumbnail noReplace={this.props.noReplace} 
                          src={this.props.thumbnail} 
-                         alt={this.props.label} /></span>
-        <span><Label label={this.props.label} /></span>
-      </div>
+                         alt={this.props.label} />
+        <Label label={this.props.label} />
+      </span>
     );
   }
 }

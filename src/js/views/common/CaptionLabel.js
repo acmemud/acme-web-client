@@ -9,8 +9,8 @@ class CaptionLabel extends React.Component {
   render() {
     return (
       <span className="mud-caption-label">
-        <div><Label label={this.props.label} /></div>
-        <div><Caption caption={this.props.caption} /></div>
+        <Label label={this.props.label} />
+        <Caption caption={this.props.caption} />
       </span>
     );
   }

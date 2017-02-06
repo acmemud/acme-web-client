@@ -8,11 +8,12 @@ import PlayerContainer from '../../containers/PlayerContainer';
 class GlobalNav extends React.Component {
   render() {
     return (
-      <Navbar>
+      <Navbar fixedTop={true}>
         <Navbar.Header>
           <Navbar.Brand>
             <ServerContainer />
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
