@@ -2,35 +2,46 @@
 
 import React from 'react';
 import {NavDropdown, MenuItem} from 'react-bootstrap';
+import ServerMenuItem from './ServerMenuItem';
 import ServerItem from './ServerItem';
+import ThumbnailCaptionLabel from '../common/ThumbnailCaptionLabel';
 
 class ServerDropdown extends React.Component {
   render() {
-    if (this.props.app.get('connected')) {
+    if (this.props.app.get('connected') || this.props.app.get('connecting')) {
       let server = this.props.servers.get(this.props.app.get('url'));
       return (
         <div>
-          <ServerItem label={server.get('label')} 
-                      image={server.get('image')} 
-                      url={server.get('url')} />
-          <NavDropdown id="servers" title="Servers">
-            <ServerItem label="Disconnect" onClick={this.props.onDisconnect} />
+          <NavDropdown id="servers" title={
+            <ServerItem label={server.get('label')} 
+                        thumbnail={server.get('thumbnail')} 
+                        url={server.get('url')} />
+          }>
+            <MenuItem title="Disconnect" onSelect={this.props.onDisconnect}>
+              <ThumbnailCaptionLabel noReplace
+                                     label="Disconnect" />
+            </MenuItem>
           </NavDropdown>
         </div>
       );
     } else {
       return (
         <div>
-          <ServerItem label="Not Connected" />
-          <NavDropdown id="servers" title="Servers">
-            { this.props.servers.valueSeq(server => (
-              <ServerItem key={server.get('url')} 
-                          label={server.get('label')} 
-                          image={server.get('image')} 
-                          url={server.get('url')} 
-                          onClick={this.props.onConnect} />
+          <NavDropdown id="servers" title={
+            <ThumbnailCaptionLabel noReplace label="Not Connected" />
+          }>
+            { this.props.servers.valueSeq().map(server => (
+              <ServerMenuItem key={server.get('url')} 
+                              label={server.get('label')} 
+                              thumbnail={server.get('thumbnail')} 
+                              url={server.get('url')} 
+                              onSelect={() => {
+                                this.props.onConnect(server)
+                              }} />
             ))}
-            <MenuItem title="Manage Servers...">Manage Servers...</MenuItem>
+            <MenuItem key={0} title="Manage Servers...">
+              <ServerItem label="Manage Servers..."/>
+            </MenuItem>
           </NavDropdown>
         </div>
       );

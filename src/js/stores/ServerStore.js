@@ -26,7 +26,7 @@ class ServerStore extends ReduceStore {
       ];
       persist = true;
     }
-    servers = servers.map((e) => { e[1] = new Server(e[1]); });
+    servers.map((e) => { e[1] = new Server(e[1]); });
     let state = Immutable.OrderedMap(servers);
     if (persist) {
       this.persistState(state);
@@ -48,7 +48,7 @@ class ServerStore extends ReduceStore {
         state = state.set(action.url, new Server({
           url: action.url,
           label: action.label,
-          image: action.image
+          icon: action.icon
         }));
         this.persistState(state);
         return state;

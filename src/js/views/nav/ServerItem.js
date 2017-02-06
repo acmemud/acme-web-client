@@ -1,16 +1,30 @@
 'use strict';
 
 import React from 'react';
-import {MenuItem} from 'react-bootstrap';
+import ThumbnailCaptionLabel from '../common/ThumbnailCaptionLabel';
+import ThumbnailLabel from '../common/ThumbnailLabel';
+import Label from '../common/Label';
 
 class ServerItem extends React.Component {
   render() {
-    return (
-      <MenuItem title={this.props.label}>
-        <div>{this.props.label}</div>
-        <div>{this.props.url}</div>
-      </MenuItem>
-    );
+    if (this.props.url) {
+      return (
+        <ThumbnailCaptionLabel label={this.props.label}
+                               thumbnail={this.props.thumbnail}
+                               caption={this.props.url} />
+      );
+    } else {
+      if (this.props.thumbnail) {
+        return (
+          <ThumbnailLabel label={this.props.label}
+                          thumbnail={this.props.thumbnail} />
+        );
+      } else {
+        return (
+          <Label label={this.props.label} />
+        );
+      }
+    }
   }
 }
 

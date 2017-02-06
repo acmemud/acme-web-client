@@ -3,7 +3,7 @@
 import React from 'react';
 import GlobalNav from './nav/GlobalNav';
 import ViewPane from './ViewPane';
-import StatusBar from './StatusBar';
+import StatusContainer from '../containers/StatusContainer';
 
 class AppView extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class AppView extends React.Component {
       <div>
         <GlobalNav />
         <ViewPane />
-        <StatusBar />
+        <StatusContainer />
       </div>
     );
   }

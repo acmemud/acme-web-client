@@ -4,15 +4,13 @@ import {ActionTypes} from '../MudConstants';
 import MudDispatcher from '../MudDispatcher';
 import MudBackend from '../utils/MudBackend';
 
-const ServerURI = 'ws://localhost:8081';
-
 const Actions = {
-  connect() {
+  connect(server) {
     MudDispatcher.dispatch({
       type: ActionTypes.CONNECTING,
-      url: ServerURI
+      url: server.get('url')
     });
-    MudBackend.connect(ServerURI);
+    MudBackend.connect(server.get('url'));
   },
 
   connected(url) {

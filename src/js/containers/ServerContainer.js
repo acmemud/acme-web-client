@@ -31,10 +31,10 @@ class ServerContainer extends React.Component {
     return (
       <ServerDropdown app={this.state.app}
                       servers={this.state.servers}
-                      onConnect={this.state.onConnect.bind(this)}
-                      onDisconnect={this.state.onDisconnect.bind(this)}
-                      onAddServer={this.state.onAddServer.bind(this)}
-                      onRemoveServer={this.state.onRemoveServer.bind(this)} />
+                      onConnect={this.state.onConnect}
+                      onDisconnect={this.state.onDisconnect}
+                      onAddServer={this.state.onAddServer}
+                      onRemoveServer={this.state.onRemoveServer} />
     );
   }
 }

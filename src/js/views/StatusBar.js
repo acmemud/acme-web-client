@@ -1,11 +1,20 @@
 'use strict';
 
 import React from 'react';
-import {Footer} from 'react-bootstrap';
 
 class StatusBar extends React.Component {
   render() {
-    return <div/>;
+    if (this.props.app.get('connecting')) {
+      return (
+        <footer>Connecting to {this.props.app.get('url')}...</footer>
+      );
+    } else if (this.props.app.get('disconnecting')) {
+      return (
+        <footer>Disconnecting...</footer>
+      );
+    } else {
+      return (<footer></footer>);
+    }
   }
 }
 
