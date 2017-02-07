@@ -9,16 +9,16 @@ class Thumbnail extends React.Component {
   render() {
     if (this.props.src) {
       return (
-        <Image bsClass="mud-thumbnail" src={this.props.src} alt={this.props.alt} rounded />
+        <Image className="mud-thumbnail" src={this.props.src} alt={this.props.alt} rounded />
       );
     } else {
-      if (this.props.noReplace) {
+      if (this.props.hiddenThumb) {
         return (
           <div className="mud-thumbnail mud-thumbnail-hidden"></div>
         );
       } else {
         return (
-          <Label bsClass="mud-thumbnail">{this.props.alt.charAt(0)}</Label>
+          <Label className="mud-thumbnail">{this.props.alt.charAt(0)}</Label>
         );
       }
     }

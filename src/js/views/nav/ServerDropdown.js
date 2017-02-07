@@ -5,6 +5,7 @@ import {NavDropdown, MenuItem} from 'react-bootstrap';
 import ServerMenuItem from './ServerMenuItem';
 import ServerItem from './ServerItem';
 import ThumbnailCaptionLabel from '../common/ThumbnailCaptionLabel';
+import ThumbnailLabel from '../common/ThumbnailLabel';
 import '../../../sass/acme.scss';
 
 class ServerDropdown extends React.Component {
@@ -18,15 +19,15 @@ class ServerDropdown extends React.Component {
                       url={server.get('url')} />
         }>
           <MenuItem title="Disconnect" onSelect={this.props.onDisconnect}>
-            <ThumbnailCaptionLabel noReplace
-                                   label="Disconnect" />
+            <ThumbnailLabel hiddenThumb
+                            label="Disconnect" />
           </MenuItem>
         </NavDropdown>
       );
     } else {
       return (
         <NavDropdown id="servers" title={
-          <ThumbnailCaptionLabel noReplace label="Not Connected" />
+          <ThumbnailLabel hiddenThumb label="Not Connected" />
         }>
           { this.props.servers.valueSeq().map(server => (
             <ServerMenuItem key={server.get('url')} 

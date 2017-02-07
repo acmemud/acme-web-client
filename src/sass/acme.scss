@@ -3,16 +3,25 @@ $bootstrap-sass-asset-helper: true;
 @import "compass/reset";
 @import "bootstrap";
 
-$thumbnail-width: 1.65em;
-$thumbnail-height: 1.65em;
+$thumbnail-width: 32px;
+$thumbnail-height: 32px;
+$thumbnail-space: 10px;
+
+@mixin force-width($width) {
+  min-width: $width;
+  width: $width;
+}
+
+@mixin force-height($height) {
+  min-height: $height;
+  height: $height;
+}
 
 @mixin thumbnail() {
-  display: inline-block;
-  float: left;
-  width: $thumbnail-width;
-  height: $thumbnail-height;
-  margin-right: 10px;
-  margin-top: 3px;
+  @include force-width($thumbnail-width);
+  @include force-height($thumbnail-height);
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .navbar li.dropdown {
@@ -22,46 +31,78 @@ $thumbnail-height: 1.65em;
     @extend .btn;
     @extend .btn-default;
 
-    .mud-thumbnail-caption-label {
-      float: left;
-    }
-
     .caret {
       margin-left: 5px;
+      margin-top: -22px;
     }
-
   }
 
   .mud-thumbnail-caption-label {
+    display: inline-flex;
+
+    .mud-caption-label {
+      flex: 1;
+      padding-left: $thumbnail-space;
+      vertical-align: top;
+    }
+
+    .mud-caption {
+      display: block;
+    }
+
+    .mud-label {
+      display: block;
+    }
+
   }
 
-  .mud-thumbnail  {
-    @extend .label;
-    @extend .label-default;
+  .mud-thumbnail-label {
+    display: inline-flex;
+
+    .mud-label {
+      flex: 1;
+      padding-left: $thumbnail-space;
+      min-height: 100%;
+    }
+
+  }
+
+  img.mud-thumbnail {
     @include thumbnail();
-    vertical-align: middle;
+  }
+
+  span.mud-thumbnail, div.mud-thumbnail {
+    @include thumbnail();
     font-size: 1.5em;
-    padding-left: 10px;
-    padding-top: 6px;
-  }
-
-  .mud-thumbnail:empty {
-    @include thumbnail();
+    padding-left: .4em;
+    padding-top: .25em
   }
 
   .mud-thumbnail-hidden {
     visibility: hidden;
   }
 
-  .mud-label {
-    display: block;
-    font-size: 1.15em;
-    vertical-align: middle;
+  .dropdown-toggle, .dropdown-menu {
+    .mud-thumbnail:empty {
+      @include thumbnail();
+    }
+  }
+
+  .mud-caption-label {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   .mud-caption {
-    display: block;
     font-size: .85em;
+  }
+
+  .mud-label {
+    font-size: 1.15em;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: left;
   }
 
 }

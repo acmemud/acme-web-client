@@ -9,9 +9,9 @@ class ThumbnailLabel extends React.Component {
   render() {
     return (
       <span className="mud-thumbnail-label">
-        <Thumbnail noReplace={this.props.noReplace} 
-                         src={this.props.thumbnail} 
-                         alt={this.props.label} />
+        <Thumbnail hiddenThumb={this.props.hiddenThumb} 
+                   src={this.props.thumbnail} 
+                   alt={this.props.label} />
         <Label label={this.props.label} />
       </span>
     );

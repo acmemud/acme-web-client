@@ -22,6 +22,7 @@ class ServerStore extends ReduceStore {
         [ AcmeUrl, { 
           url: AcmeUrl,
           label: "Acme MUD", 
+          thumbnail: 'http://mud.panterasbox.com/bigroom.png'
         } ] 
       ];
       persist = true;
