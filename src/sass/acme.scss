@@ -2,6 +2,7 @@ $bootstrap-sass-asset-helper: true;
 
 @import "compass/reset";
 @import "bootstrap";
+@import "font-awesome";
 
 $thumbnail-width: 32px;
 $thumbnail-height: 32px;
@@ -32,13 +33,19 @@ $thumbnail-space: 10px;
     @extend .btn-default;
 
     .caret {
+      display: inline-flex;
       margin-left: 5px;
-      margin-top: -22px;
     }
+
+  }
+
+  .dropdown-menu {
+    min-width: 100%;
   }
 
   .mud-thumbnail-caption-label {
     display: inline-flex;
+    vertical-align: middle;
 
     .mud-caption-label {
       flex: 1;
@@ -58,6 +65,7 @@ $thumbnail-space: 10px;
 
   .mud-thumbnail-label {
     display: inline-flex;
+    vertical-align: middle;
 
     .mud-label {
       flex: 1;
@@ -75,7 +83,12 @@ $thumbnail-space: 10px;
     @include thumbnail();
     font-size: 1.5em;
     padding-left: .4em;
-    padding-top: .25em
+    padding-top: .25em;
+
+    .fa {
+      font-size: .85em;
+    }
+
   }
 
   .mud-thumbnail-hidden {

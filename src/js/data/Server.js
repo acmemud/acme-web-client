@@ -5,7 +5,8 @@ import Immutable from 'immutable';
 const Server = Immutable.Record({
   url: '',
   label: '',
-  thumbnail: ''
+  thumbnail: '',
+  icon: ''
 });
 
 export default Server;

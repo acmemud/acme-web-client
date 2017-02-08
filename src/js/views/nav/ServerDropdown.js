@@ -16,18 +16,18 @@ class ServerDropdown extends React.Component {
         <NavDropdown id="servers" title={
           <ServerItem label={server.get('label')} 
                       thumbnail={server.get('thumbnail')} 
-                      url={server.get('url')} />
+                      url={server.get('url')}
+                      icon={server.get('icon')} />
         }>
           <MenuItem title="Disconnect" onSelect={this.props.onDisconnect}>
-            <ThumbnailLabel hiddenThumb
-                            label="Disconnect" />
+            <ThumbnailLabel label="Disconnect" icon="plug" />
           </MenuItem>
         </NavDropdown>
       );
     } else {
       return (
         <NavDropdown id="servers" title={
-          <ThumbnailLabel hiddenThumb label="Not Connected" />
+          <ThumbnailLabel label="Not Connected" icon="plug" />
         }>
           { this.props.servers.valueSeq().map(server => (
             <ServerMenuItem key={server.get('url')} 

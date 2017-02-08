@@ -11,7 +11,8 @@ class ThumbnailCaptionLabel extends React.Component {
       <span className="mud-thumbnail-caption-label">
         <Thumbnail noReplace={this.props.noReplace}
                          src={this.props.thumbnail} 
-                         alt={this.props.label} />
+                         alt={this.props.label} 
+                        icon={this.props.icon} />
         <CaptionLabel caption={this.props.caption} 
                             label={this.props.label} />
       </span>
