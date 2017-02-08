@@ -34,7 +34,10 @@ class AppStore extends ReduceStore {
         }));
 
       case ActionTypes.DISCONNECTING:
-        return state.set('disconnecting', true);
+        return state.merge(Immutable.Map({
+          connecting: false,
+          disconnecting: true
+        }));
 
       case ActionTypes.DISCONNECT:
         return state.merge(Immutable.Map({

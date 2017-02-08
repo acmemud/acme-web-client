@@ -10,16 +10,26 @@ module.exports = {
       { test: /\.scss$/, 
         loaders: ["style-loader", 
                   "css-loader", 
-                  "sass-loader?"
-                   + "includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+                  "resolve-url-loader",
+                  "sass-loader?sourceMap"
+                   + "&includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
                    + "&includePaths[]=" + path.resolve(__dirname, "./node_modules/bootstrap-sass/assets/stylesheets")
+                   + "&includePaths[]=" + path.resolve(__dirname, "./node_modules/font-awesome/scss")
                  ]
       },
-      { test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url-loader?limit=10000&minetype=application/font-woff" 
+      { test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+        loader: "url-loader",
+        options: {
+          name: "fonts/[hash].[ext]",
+          limit: 10000,
+          mimetype: "application/font-woff"
+        } 
       },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader" 
+        loader: "file-loader",
+        options: {
+          name: "fonts/[hash].[ext]"
+        } 
       }
     ]
   },
