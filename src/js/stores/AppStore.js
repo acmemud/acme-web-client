@@ -23,14 +23,17 @@ class AppStore extends ReduceStore {
       case ActionTypes.CONNECTING:
         return state.merge(Immutable.Map({
           connecting: true,
-          url: action.url
+          server: action.server
         }));
 
       case ActionTypes.CONNECT:
+        if (state.get('server').get('url') != action.url) {
+          console.warn("server url doesn't match connection url", 
+                       state.get('server').get('url'), action.url);
+        }
         return state.merge(Immutable.Map({
           connected: true,
           connecting: false,
-          url: action.url
         }));
 
       case ActionTypes.DISCONNECTING:

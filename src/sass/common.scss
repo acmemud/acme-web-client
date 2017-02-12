@@ -1,0 +1,115 @@
+$error-color: Red;
+$anchor-color: DarkSlateGray;
+$anchor-hover-color: Black;
+$button-background: Gray;
+$button-color: White;
+$button-hover-background: DimGray;
+$thumbnail-background: SlateGray;
+$thumbnail-width: 32px;
+$thumbnail-height: 32px;
+$thumbnail-space: 10px;
+
+a {
+  color: $anchor-color;
+  &:hover {
+    color: $anchor-hover-color;
+  }
+}
+
+@mixin force-width($width) {
+  min-width: $width;
+  width: $width;
+}
+
+@mixin force-height($height) {
+  min-height: $height;
+  height: $height;
+}
+
+@mixin thumbnail() {
+  @include force-width($thumbnail-width);
+  @include force-height($thumbnail-height);
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: $thumbnail-background;
+  color: $button-color;
+}
+
+.mud-thumbnail-caption-label {
+  display: inline-flex;
+  vertical-align: middle;
+
+  .mud-caption-label {
+    flex: 1;
+    padding-left: $thumbnail-space;
+    vertical-align: top;
+  }
+
+  .mud-caption {
+    display: block;
+  }
+
+  .mud-label {
+    display: block;
+  }
+
+}
+
+.mud-thumbnail-label {
+  display: inline-flex;
+  vertical-align: middle;
+
+  .mud-label {
+    flex: 1;
+    padding-left: $thumbnail-space;
+    min-height: 100%;
+  }
+
+}
+
+img.mud-thumbnail {
+  @include thumbnail();
+}
+
+span.mud-thumbnail, div.mud-thumbnail {
+  @include thumbnail();
+  font-size: 1.5em;
+  padding-left: .4em;
+  padding-top: .25em;
+
+  .fa {
+    font-size: .85em;
+  }
+}
+
+.mud-thumbnail-hidden {
+  visibility: hidden;
+}
+
+.dropdown-toggle, .dropdown-menu {
+  .mud-thumbnail:empty {
+    @include thumbnail();
+  }
+}
+
+.mud-caption-label {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.mud-caption {
+  font-size: .85em;
+}
+
+.mud-label {
+  font-size: 1.15em;
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: left;
+}
+
+.errors {
+  color: $error-color;
+  list-style: disc inside;
+}

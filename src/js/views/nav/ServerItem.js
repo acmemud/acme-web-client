@@ -11,17 +11,21 @@ class ServerItem extends React.Component {
       return (
         <ThumbnailCaptionLabel label={this.props.label}
                                thumbnail={this.props.thumbnail}
-                               caption={this.props.url} />
+                               caption={this.props.url} 
+                               icon={this.props.icon} />
       );
     } else {
-      if (this.props.thumbnail) {
+      if (this.props.thumbnail || this.props.icon) {
         return (
           <ThumbnailLabel label={this.props.label}
-                          thumbnail={this.props.thumbnail} />
+                          thumbnail={this.props.thumbnail}
+                          icon={this.props.icon} />
         );
       } else {
         return (
-          <ThumbnailLabel hiddenThumb={true} label={this.props.label} />
+          <ThumbnailLabel hiddenThumb={true} 
+                          label={this.props.label}
+                          icon={this.props.icon} />
         );
       }
     }
