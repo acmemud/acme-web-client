@@ -15,7 +15,7 @@ class Thumbnail extends React.Component {
     } else {
       if (this.props.hiddenThumb) {
         return (
-          <div className="mud-thumbnail mud-thumbnail-hidden">{this.props.icon}</div>
+          <div className="mud-thumbnail mud-thumbnail-hidden"></div>
         );
       } else {
         let icon = this.props.alt.charAt(0);
