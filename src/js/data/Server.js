@@ -3,6 +3,7 @@
 import Immutable from 'immutable';
 
 const Server = Immutable.Record({
+  key: '',
   url: '',
   label: '',
   thumbnail: '',

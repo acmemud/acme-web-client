@@ -8,7 +8,7 @@ const Actions = {
   connect(server) {
     MudDispatcher.dispatch({
       type: ActionTypes.CONNECTING,
-      url: server.get('url')
+      server: server
     });
     MudBackend.connect(server.get('url'));
   },

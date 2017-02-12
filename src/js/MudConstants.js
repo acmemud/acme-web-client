@@ -34,6 +34,10 @@ export const Schemas = {
           type: "object",
           properties: {
             url: {
+              title: "Server key - this property will be overwritten",
+              type: "string"
+            },
+            url: {
               title: "Server URL",
               type: "string",
               pattern: "^wss?:\\/\\/(www\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"

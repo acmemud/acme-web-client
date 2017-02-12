@@ -4,11 +4,12 @@ import React from 'react';
 
 class StatusBar extends React.Component {
   render() {
-    if (this.props.app.get('connecting')) {
+    let app = this.props.app;
+    if (app.get('connecting')) {
       return (
-        <footer>Connecting to {this.props.app.get('url')}...</footer>
+        <footer>Connecting to {app.get('server').get('url')}...</footer>
       );
-    } else if (this.props.app.get('disconnecting')) {
+    } else if (app.get('disconnecting')) {
       return (
         <footer>Disconnecting...</footer>
       );

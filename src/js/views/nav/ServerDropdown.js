@@ -27,7 +27,7 @@ class ServerDropdown extends React.Component {
 
   render() {
     if (this.props.app.get('connected') || this.props.app.get('connecting')) {
-      let server = this.props.servers.get(this.props.app.get('url'));
+      let server = this.props.app.get('server');
       return (
         <NavDropdown id="servers" title={
           <ServerItem label={server.get('label')} 
@@ -46,11 +46,8 @@ class ServerDropdown extends React.Component {
           <ThumbnailLabel label="Not Connected" icon="plug" />
         }>
           { this.props.servers.valueSeq().map(server => (
-            <ServerMenuItem key={server.get('url')} 
-                            label={server.get('label')} 
-                            thumbnail={server.get('thumbnail')} 
-                            icon={server.get('icon')}
-                            url={server.get('url')} 
+            <ServerMenuItem key={server.get('key')} 
+                            server={server} 
                             onSelect={() => {
                               this.props.onConnect(server)
                             }} />

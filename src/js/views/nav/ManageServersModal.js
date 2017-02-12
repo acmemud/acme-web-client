@@ -147,7 +147,7 @@ class ManageServersModal extends React.Component {
               <AceEditor mode="json" 
                          theme="github" 
                          width="400px"
-                         height="250px"
+                         height="100%"
                          tabSize={2}
                          onChange={this.onChange.bind(this)}
                          name="serversEditor"

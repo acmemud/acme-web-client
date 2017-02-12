@@ -16,7 +16,10 @@ export class ServerStore extends ReduceStore {
   }
 
   static jsonToServers(json) {
-    json.map((e) => { e[1] = new Server(e[1]); });
+    json.map((e) => { 
+      e[1].key = e[0];
+      e[1] = new Server(e[1]); 
+    });
     return Immutable.OrderedMap(json);
   }
 

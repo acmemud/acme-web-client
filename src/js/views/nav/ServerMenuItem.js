@@ -6,12 +6,14 @@ import ServerItem from './ServerItem';
 
 class ServerMenuItem extends React.Component {
   render() {
+    let server = this.props.server;
     return (
-      <MenuItem title={this.props.label} onSelect={this.props.onSelect} >
-        <ServerItem label={this.props.label}
-                    thumbnail={this.props.thumbnail}
-                    icon={this.props.icon}
-                    url={this.props.url} />
+      <MenuItem title={server.get('label')} 
+                onSelect={this.props.onSelect} >
+        <ServerItem label={server.label}
+                    thumbnail={server.thumbnail}
+                    icon={server.icon}
+                    url={server.url} />
       </MenuItem>
     );
   }
