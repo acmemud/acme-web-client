@@ -47,17 +47,10 @@ const Actions = {
     });
   },
 
-  addServer(server) {
+  saveServers(servers) {
     MudDispatcher.dispatch({
-      type: ActionTypes.ADD_SERVER,
-      server
-    });
-  },
-
-  removeServer(server) {
-    MudDispatcher.dispatch({
-      type: ActionTypes.REMOVE_SERVER,
-      server
+      type: ActionTypes.SAVE_SERVERS,
+      servers
     });
   },
   

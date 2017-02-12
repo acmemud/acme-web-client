@@ -2,62 +2,58 @@
 
 import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
-import {ActionTypes} from '../MudConstants';
+import {ActionTypes, ServerConstants} from '../MudConstants';
 import MudDispatcher from '../MudDispatcher';
 import Server from '../data/Server';
 
-const AcmeUrl = 'ws://localhost:8080';
-const ServersItem = 'servers';
-
-class ServerStore extends ReduceStore {
+export class ServerStore extends ReduceStore {
   constructor() {
     super(MudDispatcher);
   }
 
-  restoreState() {
-    let servers = JSON.parse(localStorage.getItem(ServersItem));
+  static serversToJson(servers, indent) {
+    return JSON.stringify(servers.entrySeq().toJSON(), null, indent);
+  }
+
+  static jsonToServers(json) {
+    json.map((e) => { e[1] = new Server(e[1]); });
+    return Immutable.OrderedMap(json);
+  }
+
+  static restoreState() {
+    let servers = JSON.parse(
+      localStorage.getItem(ServerConstants.ServersLocalStoreItem)
+    );
     let persist = false;
     if (!servers) {
       servers = [ 
-        [ AcmeUrl, { 
-          url: AcmeUrl,
-          label: "Acme MUD", 
-          thumbnail: 'http://mud.panterasbox.com/bigroom.png'
-        } ] 
+        [ ServerConstants.DefaultServer['url'],
+          ServerConstants.DefaultServer 
+        ] 
       ];
       persist = true;
     }
-    servers.map((e) => { e[1] = new Server(e[1]); });
-    let state = Immutable.OrderedMap(servers);
+    let state = ServerStore.jsonToServers(servers);
     if (persist) {
-      this.persistState(state);
+      ServerStore.persistState(state);
     }
     return state;
   }
 
-  persistState(state) {
-    localStorage.setItem(ServersItem, JSON.stringify(state.entrySeq().toJSON()));
+  static persistState(state) {
+    localStorage.setItem(ServerConstants.ServersLocalStoreItem, 
+                         ServerStore.serversToJson(state));
   }
 
   getInitialState() {
-    return this.restoreState();
+    return ServerStore.restoreState();
   }
 
   reduce(state, action) {
     switch (action.type) {
-      case ActionTypes.ADD_SERVER:
-        state = state.set(action.url, new Server({
-          url: action.url,
-          label: action.label,
-          icon: action.icon
-        }));
-        this.persistState(state);
-        return state;
-
-      case ActionTypes.REMOVE_SERVER:
-        state = state.delete(action.url);
-        this.persistState(state);
-        return state;
+      case ActionTypes.SAVE_SERVERS:
+        ServerStore.persistState(action.servers);
+        return action.servers;
 
       default:
         return state;

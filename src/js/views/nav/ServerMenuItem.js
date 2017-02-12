@@ -10,6 +10,7 @@ class ServerMenuItem extends React.Component {
       <MenuItem title={this.props.label} onSelect={this.props.onSelect} >
         <ServerItem label={this.props.label}
                     thumbnail={this.props.thumbnail}
+                    icon={this.props.icon}
                     url={this.props.url} />
       </MenuItem>
     );
